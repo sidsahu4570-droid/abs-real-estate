@@ -208,9 +208,9 @@ export default function Navbar({ activePage, setActivePage, openEnquiryModal }) 
           <div className="flex items-center space-x-3">
             <button
               onClick={() => openEnquiryModal()}
-              className="hidden sm:flex items-center space-x-2 bg-gradient-to-r from-amber-700 to-amber-800 hover:from-amber-800 hover:to-amber-900 text-white font-semibold text-xs uppercase tracking-wider px-4.5 py-2.5 rounded-lg shadow-sm hover:shadow transition-all"
+              className="hidden sm:flex items-center space-x-2 bg-gradient-to-r from-amber-700 via-amber-800 to-amber-900 hover:from-amber-600 hover:to-amber-800 text-white font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-xl shadow-md hover:shadow-lg transition-all whitespace-nowrap"
             >
-              <Sparkles className="w-4 h-4 fill-amber-200 text-amber-200" />
+              <Sparkles className="w-4 h-4 fill-amber-300 text-amber-300 shrink-0" />
               <span>Enquire Now</span>
             </button>
 
