@@ -58,7 +58,6 @@ export default function ProjectDetailPage({ projectId, setActivePage, openEnquir
           <button
             onClick={() => {
               setActivePage('projects');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className="inline-flex items-center space-x-2 text-xs text-slate-800 hover:text-amber-800 font-bold mb-4 bg-white/90 px-3.5 py-1.5 rounded-full border border-slate-300 shadow-sm"
           >

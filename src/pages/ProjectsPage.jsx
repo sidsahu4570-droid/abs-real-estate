@@ -82,7 +82,6 @@ export default function ProjectsPage({ setActivePage, openEnquiryModal }) {
                 <button
                   onClick={() => {
                     setActivePage(`project-detail:${project.id}`);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="bg-amber-800 hover:bg-amber-900 text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-lg shadow-sm transition-all flex items-center space-x-1.5"
                 >

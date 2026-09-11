@@ -51,7 +51,6 @@ export default function AboutPage({ setActivePage, openEnquiryModal }) {
               <button
                 onClick={() => {
                   setActivePage('director');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
                 className="bg-white text-slate-800 hover:text-amber-800 border border-slate-300 text-xs font-bold px-6 py-3 rounded-lg shadow-sm transition-colors"
               >

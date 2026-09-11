@@ -20,7 +20,6 @@ export default function Footer({ setActivePage, openEnquiryModal }) {
     } else {
       setActivePage(pageId);
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (

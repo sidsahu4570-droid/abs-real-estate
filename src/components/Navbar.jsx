@@ -36,7 +36,6 @@ export default function Navbar({ activePage, setActivePage, openEnquiryModal }) 
     setMobileMenuOpen(false);
     setProjectsDropdown(false);
     setDocsDropdown(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (

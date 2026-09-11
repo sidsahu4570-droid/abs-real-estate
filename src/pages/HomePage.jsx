@@ -84,7 +84,6 @@ export default function HomePage({ setActivePage, openEnquiryModal }) {
               <button
                 onClick={() => {
                   setActivePage('projects');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
                 className="bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 hover:from-amber-500 hover:to-amber-700 text-white font-bold text-xs uppercase tracking-wider px-7 py-3.5 rounded-lg shadow-lg shadow-amber-950/50 hover:shadow-amber-800/40 transition-all flex items-center justify-center space-x-2 w-full sm:w-auto"
               >
@@ -239,7 +238,6 @@ export default function HomePage({ setActivePage, openEnquiryModal }) {
                 <button
                   onClick={() => {
                     setActivePage('about');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="bg-amber-800 hover:bg-amber-900 text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-lg shadow-sm transition-all flex items-center space-x-2"
                 >
@@ -250,7 +248,6 @@ export default function HomePage({ setActivePage, openEnquiryModal }) {
                 <button
                   onClick={() => {
                     setActivePage('director');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="text-xs text-slate-700 hover:text-amber-800 font-bold underline underline-offset-4"
                 >
@@ -285,7 +282,6 @@ export default function HomePage({ setActivePage, openEnquiryModal }) {
             <button
               onClick={() => {
                 setActivePage('projects');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className="text-xs font-bold text-amber-800 hover:text-amber-900 flex items-center space-x-1"
             >
@@ -361,7 +357,6 @@ export default function HomePage({ setActivePage, openEnquiryModal }) {
                   <button
                     onClick={() => {
                       setActivePage(`project-detail:${project.id}`);
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
                     className="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold py-2.5 rounded-lg border border-slate-300 text-center transition-colors"
                   >
@@ -414,7 +409,6 @@ export default function HomePage({ setActivePage, openEnquiryModal }) {
             <button
               onClick={() => {
                 setActivePage('project-detail:prayag-new-city');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className="text-xs font-bold text-amber-800 hover:text-amber-900 underline underline-offset-4"
             >

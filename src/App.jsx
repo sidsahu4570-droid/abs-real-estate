@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import StickyMobileCTA from './components/StickyMobileCTA';
@@ -16,7 +16,10 @@ import GalleryPage from './pages/GalleryPage';
 import ContactPage from './pages/ContactPage';
 
 export default function App() {
-  const [activePage, setActivePage] = useState('home');
+  const [activePage, setActivePage] = useState(() => {
+    const hash = typeof window !== 'undefined' ? window.location.hash.replace('#', '') : '';
+    return hash || 'home';
+  });
   const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
   const [enquiryInitialProject, setEnquiryInitialProject] = useState('');
 
@@ -24,6 +27,64 @@ export default function App() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [lightboxImages, setLightboxImages] = useState([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  // 1. Disable browser's automatic scroll restoration and handle Back/Forward navigation
+  useEffect(() => {
+    if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    const handlePopState = (e) => {
+      if (e.state && e.state.page) {
+        setActivePage(e.state.page);
+      } else {
+        const hash = window.location.hash.replace('#', '');
+        setActivePage(hash || 'home');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // 2. GUARANTEED GLOBAL SCROLL TO TOP ON PAGE NAVIGATION
+  useLayoutEffect(() => {
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
+
+    // Instant reset synchronously before browser paint
+    scrollToTop();
+
+    // Secondary reset on next animation frame
+    const rafId = requestAnimationFrame(() => {
+      scrollToTop();
+    });
+
+    // Safety fallback timer for dynamic content mounting
+    const timerId = setTimeout(() => {
+      scrollToTop();
+    }, 50);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      clearTimeout(timerId);
+    };
+  }, [activePage]);
+
+  // Wrapper for setting active page with history push state
+  const handlePageChange = (newPage) => {
+    setActivePage(newPage);
+    try {
+      if (typeof window !== 'undefined') {
+        window.history.pushState({ page: newPage }, '', `#${newPage}`);
+      }
+    } catch (err) {
+      // Ignore if pushState blocked
+    }
+  };
 
   const openEnquiryModal = (projectName = '') => {
     setEnquiryInitialProject(projectName);
@@ -42,7 +103,7 @@ export default function App() {
       return (
         <ProjectDetailPage
           projectId={projectId}
-          setActivePage={setActivePage}
+          setActivePage={handlePageChange}
           openEnquiryModal={openEnquiryModal}
           openLightbox={openLightbox}
         />
@@ -51,13 +112,13 @@ export default function App() {
 
     switch (activePage) {
       case 'home':
-        return <HomePage setActivePage={setActivePage} openEnquiryModal={openEnquiryModal} />;
+        return <HomePage setActivePage={handlePageChange} openEnquiryModal={openEnquiryModal} />;
       case 'about':
-        return <AboutPage setActivePage={setActivePage} openEnquiryModal={openEnquiryModal} />;
+        return <AboutPage setActivePage={handlePageChange} openEnquiryModal={openEnquiryModal} />;
       case 'director':
         return <DirectorDeskPage openEnquiryModal={openEnquiryModal} />;
       case 'projects':
-        return <ProjectsPage setActivePage={setActivePage} openEnquiryModal={openEnquiryModal} />;
+        return <ProjectsPage setActivePage={handlePageChange} openEnquiryModal={openEnquiryModal} />;
       case 'availability':
         return <PlotAvailabilityPage openEnquiryModal={openEnquiryModal} />;
       case 'documents':
@@ -67,7 +128,7 @@ export default function App() {
       case 'contact':
         return <ContactPage />;
       default:
-        return <HomePage setActivePage={setActivePage} openEnquiryModal={openEnquiryModal} />;
+        return <HomePage setActivePage={handlePageChange} openEnquiryModal={openEnquiryModal} />;
     }
   };
 
@@ -77,7 +138,7 @@ export default function App() {
       {/* Sticky Luxury Navbar */}
       <Navbar 
         activePage={activePage} 
-        setActivePage={setActivePage} 
+        setActivePage={handlePageChange} 
         openEnquiryModal={openEnquiryModal} 
       />
 
@@ -88,7 +149,7 @@ export default function App() {
 
       {/* Footer */}
       <Footer 
-        setActivePage={setActivePage} 
+        setActivePage={handlePageChange} 
         openEnquiryModal={openEnquiryModal} 
       />
 
