@@ -28,18 +28,19 @@ export default function HomePage({ setActivePage, openEnquiryModal }) {
   return (
     <div className="space-y-16 pb-16">
       
-      {/* 1. HERO SECTION (BRIGHT LIGHT HERO WITH OVERLAY) */}
-      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-[#FAFAF8] border-b border-slate-200">
+      {/* 1. HERO SECTION (RICH LUXURY HIGH-CONTRAST HERO) */}
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-slate-950 border-b border-amber-900/30">
         
-        {/* Large High Quality Background Image with Subtle Light Overlay */}
+        {/* Large High Quality Background Image with Dark Luxury Gradient Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=2000&q=80" 
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80" 
             alt="Prayagraj Real Estate Development" 
-            className="w-full h-full object-cover object-center opacity-40 scale-105"
+            className="w-full h-full object-cover object-center scale-105"
           />
-          {/* Light Overlay */}
-          <div className="absolute inset-0 bg-hero-light-overlay"></div>
+          {/* Deep Luxury Dark & Amber Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/80 to-slate-950/60 sm:from-slate-950/90 sm:via-slate-900/75 sm:to-slate-950/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/40"></div>
         </div>
 
         {/* Hero Content Box */}
@@ -47,33 +48,33 @@ export default function HomePage({ setActivePage, openEnquiryModal }) {
           <div className="max-w-3xl space-y-6">
             
             {/* Top Label */}
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-100/90 border border-amber-300 text-amber-900 text-xs font-bold uppercase tracking-widest">
-              <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/40 text-amber-300 text-xs font-bold uppercase tracking-widest backdrop-blur-md">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
               <span>Leading Real Estate Company in Prayagraj</span>
             </div>
 
             {/* Main Slogan Headline */}
-            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 leading-tight">
-              Best Residential Plots in <span className="text-amber-800">Prayagraj</span>
+            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
+              Best Residential Plots in <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-amber-200">Prayagraj</span>
             </h1>
 
             {/* Supporting Copy */}
-            <p className="text-slate-700 text-sm sm:text-lg leading-relaxed font-normal max-w-2xl">
+            <p className="text-slate-200 text-sm sm:text-lg leading-relaxed font-normal max-w-2xl text-shadow-sm">
               {companyInfo.heroText}
             </p>
 
             {/* Feature Highlights Pills */}
-            <div className="flex flex-wrap gap-2 pt-1">
-              <span className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-white/90 border border-slate-200 text-xs text-slate-800 font-semibold shadow-sm">
-                <CheckCircle2 className="w-4 h-4 text-emerald-700" />
+            <div className="flex flex-wrap gap-2.5 pt-1">
+              <span className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-slate-900/80 border border-slate-700/80 text-xs text-slate-200 font-semibold shadow-md backdrop-blur-md">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                 <span>Genuine Rates</span>
               </span>
-              <span className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-white/90 border border-slate-200 text-xs text-slate-800 font-semibold shadow-sm">
-                <CheckCircle2 className="w-4 h-4 text-amber-700" />
+              <span className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-slate-900/80 border border-slate-700/80 text-xs text-slate-200 font-semibold shadow-md backdrop-blur-md">
+                <CheckCircle2 className="w-4 h-4 text-amber-400" />
                 <span>30-Ft Roads & 40-Ft Entrance</span>
               </span>
-              <span className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-white/90 border border-slate-200 text-xs text-slate-800 font-semibold shadow-sm">
-                <CheckCircle2 className="w-4 h-4 text-amber-700" />
+              <span className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-slate-900/80 border border-slate-700/80 text-xs text-slate-200 font-semibold shadow-md backdrop-blur-md">
+                <CheckCircle2 className="w-4 h-4 text-amber-400" />
                 <span>Prime Jhusi & Rewa Road Locations</span>
               </span>
             </div>
@@ -85,7 +86,7 @@ export default function HomePage({ setActivePage, openEnquiryModal }) {
                   setActivePage('projects');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
-                className="bg-amber-800 hover:bg-amber-900 text-white font-bold text-xs uppercase tracking-wider px-7 py-3.5 rounded-lg shadow-sm hover:shadow transition-all flex items-center justify-center space-x-2 w-full sm:w-auto"
+                className="bg-gradient-to-r from-amber-600 via-amber-700 to-amber-800 hover:from-amber-500 hover:to-amber-700 text-white font-bold text-xs uppercase tracking-wider px-7 py-3.5 rounded-lg shadow-lg shadow-amber-950/50 hover:shadow-amber-800/40 transition-all flex items-center justify-center space-x-2 w-full sm:w-auto"
               >
                 <span>Explore Projects</span>
                 <ArrowRight className="w-4 h-4 text-amber-200" />
@@ -93,16 +94,16 @@ export default function HomePage({ setActivePage, openEnquiryModal }) {
 
               <button
                 onClick={() => openEnquiryModal('Prayag New City')}
-                className="bg-white hover:bg-slate-50 text-slate-900 font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-lg border border-slate-300 shadow-sm transition-all flex items-center justify-center space-x-2 w-full sm:w-auto"
+                className="bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-lg border border-white/30 backdrop-blur-md transition-all flex items-center justify-center space-x-2 w-full sm:w-auto"
               >
                 <span>Enquire Now</span>
               </button>
 
               <a
                 href={`tel:${companyInfo.contacts.primaryPhone}`}
-                className="hidden md:flex bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs px-5 py-3.5 rounded-lg border border-slate-300 transition-all items-center space-x-2"
+                className="hidden md:flex bg-slate-900/60 hover:bg-slate-900/80 text-amber-300 font-bold text-xs px-5 py-3.5 rounded-lg border border-amber-400/30 backdrop-blur-md transition-all items-center space-x-2"
               >
-                <Phone className="w-4 h-4 text-amber-800" />
+                <Phone className="w-4 h-4 text-amber-400" />
                 <span>Call Hotline</span>
               </a>
 
@@ -110,9 +111,9 @@ export default function HomePage({ setActivePage, openEnquiryModal }) {
                 href={`https://wa.me/${companyInfo.contacts.whatsapp}?text=Hello%20TriveniInfra,%20I%20am%20interested%20in%20residential%20plots.`}
                 target="_blank"
                 rel="noreferrer"
-                className="hidden md:flex bg-emerald-50 hover:bg-emerald-100 text-emerald-900 font-bold text-xs px-5 py-3.5 rounded-lg border border-emerald-300 transition-all items-center space-x-2"
+                className="hidden md:flex bg-emerald-950/60 hover:bg-emerald-900/80 text-emerald-300 font-bold text-xs px-5 py-3.5 rounded-lg border border-emerald-500/40 backdrop-blur-md transition-all items-center space-x-2"
               >
-                <MessageSquare className="w-4 h-4 text-emerald-700" />
+                <MessageSquare className="w-4 h-4 text-emerald-400" />
                 <span>WhatsApp</span>
               </a>
             </div>
